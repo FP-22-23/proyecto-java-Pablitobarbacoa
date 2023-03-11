@@ -55,5 +55,5 @@ public class Peliculas_tests {
 	System.out.println("Prueba de la función auxiliar del Ratio Recaudación/Calificación: "+ p.getRatioCalificacionyRecaudacion(p.getCalificacion(), p.getRecaudacion())+ " millones/punto");
 	
 	
-}
-}
+
+}}
