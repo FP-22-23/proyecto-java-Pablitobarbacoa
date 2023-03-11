@@ -48,7 +48,7 @@ public PeliculasImpl(String titulo, String director, Double calificacion) {
 
 
 public PeliculasImpl(String titulo, String director, List<String> estrellas, Double calificacion, Duration duracion,
-		Boolean tieneSexo, Categoria c) {
+		Boolean tieneSexo, Double recaudacion, Categoria c) {
 	this.titulo = titulo;
 	Checkers.check("Error en el título", titulo != null);
 	
@@ -61,6 +61,7 @@ public PeliculasImpl(String titulo, String director, List<String> estrellas, Dou
 	this.calificacion = calificacion;
 	this.duracion = Duration.ZERO;
 	this.tieneSexo = tieneSexo;
+	this.recaudacion=recaudacion;
 	c= null;
 }
 
