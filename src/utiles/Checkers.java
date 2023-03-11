@@ -1,11 +1,7 @@
-package fp.tiposs;
+package utiles;
 
-public class Checkers {
-	/**
-	 * @author reinaqu
-	 * Clase de utilidad con mÃ©todos para facilitar la gestiÃ³n de restricciones.
-	 */
 
+	public class Checkers {
 
 		/**
 		 * @param textoRestriccion

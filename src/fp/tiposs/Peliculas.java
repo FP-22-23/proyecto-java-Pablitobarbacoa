@@ -1,5 +1,6 @@
 package fp.tiposs;
 
+import java.time.Duration;
 import java.util.List;
 
 public interface Peliculas {
@@ -19,12 +20,22 @@ public interface Peliculas {
     Double getCalificacion();
     void setCalificacion(Double calificacion);
     
-    Integer getDuracion();
-    void setDuracion();
+    Duration getDuracion();
+    void setDuracion(Integer duracion);
     
     Boolean getTieneSexo();
-    void setTieneSexo();
+    void setTieneSexo(Boolean tieneSexo);
     
     Integer getAnyoEstreno();
-    void setAnyoEstreno();
+    void setAnyoEstreno(Integer anyoEstreno);
+    
+    Double getRecaudacion();
+    void setRecaudacion(Double recaudacion);
+    
+    
+    
+    //PROPIEDAD DE TIPO AUXILIAR
+    
+    
+     Double getRatioCalificacionyRecaudacion(Double calificacion, Double recaudacion );
 }
