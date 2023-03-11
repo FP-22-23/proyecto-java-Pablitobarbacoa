@@ -18,6 +18,8 @@ public  class PeliculasImpl implements Peliculas {
 	
 	
 
+
+
 private String titulo;
 private String director;
 private List<String> estrellas;
@@ -25,7 +27,7 @@ private Double calificacion;
 private Duration duracion;
 private Integer anyoEstreno;
 private Boolean tieneSexo;
-private Double recaudacion;
+private Double recaudacionMillones;
 
 
 
@@ -47,7 +49,7 @@ public PeliculasImpl(String titulo, String director, Double calificacion) {
 }
 
 
-public PeliculasImpl(String titulo, String director, List<String> estrellas, Double calificacion, Duration duracion,
+public PeliculasImpl(String titulo, String director, List<String> estrellas, Double calificacion, Duration duracion,Integer anyoEstreno,
 		Boolean tieneSexo, Double recaudacion, Categoria c) {
 	this.titulo = titulo;
 	Checkers.check("Error en el título", titulo != null);
@@ -60,8 +62,9 @@ public PeliculasImpl(String titulo, String director, List<String> estrellas, Dou
 	
 	this.calificacion = calificacion;
 	this.duracion = Duration.ZERO;
+	this.anyoEstreno=anyoEstreno;
 	this.tieneSexo = tieneSexo;
-	this.recaudacion=recaudacion;
+	this.recaudacionMillones=recaudacion;
 	c= null;
 }
 
@@ -112,27 +115,36 @@ public PeliculasImpl(String titulo, String director, List<String> estrellas, Dou
 	
 	
 	public Double getRecaudacion() {
-		return recaudacion;}
+		return recaudacionMillones;}
 	public void setRecaudacion(Double recaudacion) {
-		this.recaudacion = recaudacion;}
+		this.recaudacionMillones = recaudacion;}
 
 
-	@Override
-	public void seDirector() {
-		// TODO Auto-generated method stub
-		
-	}
-
-		
+	
 	public Double getRatioCalificacionyRecaudacion(Double calificacion, Double recaudacion ) {
 		
-		return this.recaudacion/this.calificacion;
+		return this.recaudacionMillones/this.calificacion;
 	}
 
 
-	@Override
-	public void setDuracion(Integer duracion) {
-		// TODO Auto-generated method stub
-		
+public String toString() {
+		return "PeliculasImpl [titulo=" + titulo + ", director=" + director + ", estrellas=" + estrellas
+				+ ", calificacion=" + calificacion + ", duracion=" + duracion + ", anyoEstreno=" + anyoEstreno
+				+ ", tieneSexo=" + tieneSexo + ", recaudacionMillones=" + recaudacionMillones + "]";
 	}
+
+
+@Override
+public void seDirector() {
+	// TODO Auto-generated method stub
+	
+}
+
+
+@Override
+public void setDuracion(Integer duracion) {
+	// TODO Auto-generated method stub
+	
+}
+
 }

@@ -28,7 +28,7 @@ public class Peliculas_tests {
 	listita.add(star2);
 	
 	
-	List<String> categorias = new LinkedList();
+	List<String> categorias = new LinkedList<String>();
 	
 	String cat1= "Comedia negra";
 	String cat2= "Drama biográfico";
@@ -40,10 +40,19 @@ public class Peliculas_tests {
 	Categoria c= new Categoria(categorias, "Más de 18");
 			
 	
-	Peliculas p= new PeliculasImpl("El lobo de Wall Street", "Martin Scorsese", listita, 8.2, Duration.ofMinutes(179), true, 392.5, c);
+	Peliculas p= new PeliculasImpl("El lobo de Wall Street", "Martin Scorsese", listita, 8.2, Duration.ofMinutes(179),2013, true, 392.5, c);
+	
+	
 	
 	System.out.println(p);
 	
+	System.out.println("Prueba del getter del Año de Estreno: " + p.getAnyoEstreno());
+	
+	p.setCalificacion(6.4);
+	
+	System.out.println("Prueba del cambio de Calificación con el setter: " + p.getCalificacion());
+	
+	System.out.println("Prueba de la función auxiliar del Ratio Recaudación/Calificación: "+ p.getRatioCalificacionyRecaudacion(p.getCalificacion(), p.getRecaudacion())+ " millones/punto");
 	
 	
 }
