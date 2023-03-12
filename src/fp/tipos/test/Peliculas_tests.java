@@ -1,6 +1,7 @@
 package fp.tipos.test;
 
 import java.time.Duration;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import java.util.ArrayList;
@@ -43,7 +44,7 @@ public class Peliculas_tests {
 			
 	//Utilización del método Constructor con todas las variables
 	
-	Peliculas p= new PeliculasImpl("El lobo de Wall Street", "Martin Scorsese", listita, 8.2, Duration.ofMinutes(179),2013, true, 392.5, c);
+	Peliculas p= new PeliculasImpl("El lobo de Wall Street", "Martin Scorsese", listita, 8.2, Duration.ofMinutes(179),LocalDate.of(2013, 05, 14), true, 392.5, c);
 	
 	
 	
@@ -65,13 +66,13 @@ public class Peliculas_tests {
 	
 	//Creación de una película con mimsmo nombre, pero distinto director para utilizar el equals
 	
-	Peliculas p2= new PeliculasImpl("El lobo de Wall Street", "Manolín Fernandez", 2013, 8.2);
+	Peliculas p2= new PeliculasImpl("El lobo de Wall Street", "Manolín Fernandez", LocalDate.of(2013, 05, 14), 8.2);
 	
 	System.out.println("Codigo hash de p:" + p.hashCode() );
 	System.out.println("Código hash de p2:"+ p2.hashCode());
 	System.out.println("Son c1 y c2 iguales?:" + p.equals(p2));
 	
-	//Ahora, le vamos a poner el mismo director a p2, pero le vamos a cambiar la calificación
+	//Ahora, le vamos a poner el mismo director a p2, para ver si son iguales.
 	
 	p2.setDirector("Martin Scorsese");
 	

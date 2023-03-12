@@ -3,7 +3,7 @@ package fp.tiposs;
 import java.time.Duration;
 
 import java.time.LocalDate;
-
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -26,7 +26,7 @@ private String director;
 private List<String> estrellas;
 private Double calificacion;
 private Duration duracion;
-private Integer anyoEstreno;
+private LocalDate anyoEstreno;
 private Boolean tieneSexo;
 private Double recaudacionMillones;
 
@@ -37,7 +37,7 @@ private Double recaudacionMillones;
 
 
 
-public PeliculasImpl(String titulo, String director,Integer anyoEstreno, Double calificacion) {
+public PeliculasImpl(String titulo, String director,LocalDate anyoEstreno, Double calificacion) {
 
 	this.titulo = titulo;
 	Checkers.check("Error en el título", titulo != null);
@@ -51,7 +51,7 @@ public PeliculasImpl(String titulo, String director,Integer anyoEstreno, Double 
 }
 
 
-public PeliculasImpl(String titulo, String director, List<String> estrellas, Double calificacion, Duration duracion,Integer anyoEstreno,
+public PeliculasImpl(String titulo, String director, List<String> estrellas, Double calificacion, Duration duracion,LocalDate anyoEstreno,
 		Boolean tieneSexo, Double recaudacion, Categoria c) {
 	this.titulo = titulo;
 	Checkers.check("Error en el título", titulo != null);
@@ -111,9 +111,9 @@ public PeliculasImpl(String titulo, String director, List<String> estrellas, Dou
 		this.tieneSexo = tieneSexo;}
 	
 	
-	public Integer getAnyoEstreno() {
+	public LocalDate getAnyoEstreno() {
 		return anyoEstreno;}
-	public void setAnyoEstreno(Integer anyoEstreno) {
+	public void setAnyoEstreno(LocalDate anyoEstreno) {
 		this.anyoEstreno = anyoEstreno;}
 	
 	

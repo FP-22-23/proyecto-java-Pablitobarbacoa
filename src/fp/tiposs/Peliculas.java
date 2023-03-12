@@ -1,6 +1,8 @@
 package fp.tiposs;
 
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface Peliculas {
@@ -26,8 +28,8 @@ public interface Peliculas {
     Boolean getTieneSexo();
     void setTieneSexo(Boolean tieneSexo);
     
-    Integer getAnyoEstreno();
-    void setAnyoEstreno(Integer anyoEstreno);
+    LocalDate getAnyoEstreno();
+    void setAnyoEstreno(LocalDate anyoEstreno);
     
     Double getRecaudacion();
     void setRecaudacion(Double recaudacion);
