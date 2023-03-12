@@ -12,7 +12,7 @@ El objetivo de este proyecto es analizar los datos de las peliculas más popular
   * **fp.common**: Paquete que contiene los tipos auxiliares del proyecto
   * **fp.utiles**:  Paquete que contiene las clases de utilidad. 
 * **/data**: Contiene el dataset del proyecto
-    * **walmart_com-ecommerce_product_details.csv**: Archivo csv que muestra información sobre las películas más populares en IMDb desde 1898 hasta 2022.
+    * **IMDb_Data_final_Elbueno - IMDb_Data_final**: Archivo csv que muestra información sobre las películas más populares en IMDb desde 1898 hasta 2022.
     
 ## Estructura del *dataset*
 
