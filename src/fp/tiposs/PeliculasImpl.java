@@ -5,6 +5,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 
 import java.util.List;
+import java.util.Objects;
 
 import utiles.Checkers;
 
@@ -36,7 +37,7 @@ private Double recaudacionMillones;
 
 
 
-public PeliculasImpl(String titulo, String director, Double calificacion) {
+public PeliculasImpl(String titulo, String director,Integer anyoEstreno, Double calificacion) {
 
 	this.titulo = titulo;
 	Checkers.check("Error en el título", titulo != null);
@@ -45,6 +46,7 @@ public PeliculasImpl(String titulo, String director, Double calificacion) {
 	Checkers.check("Error en el nombre del director", director != null);
 	
 	this.calificacion = calificacion;
+	this.anyoEstreno=anyoEstreno;
 	
 }
 
@@ -79,6 +81,7 @@ public PeliculasImpl(String titulo, String director, List<String> estrellas, Dou
 
 	public String getDirector() {
 		return director;}
+	
 	public void setDirector(String director) {
 		Checkers.check("Error en el nombre del director", director != null);
 		this.director = director;}
@@ -120,13 +123,14 @@ public PeliculasImpl(String titulo, String director, List<String> estrellas, Dou
 		this.recaudacionMillones = recaudacion;}
 
 
-	
+	//Función auxiliar
 	public Double getRatioCalificacionyRecaudacion(Double calificacion, Double recaudacion ) {
 		
 		return this.recaudacionMillones/this.calificacion;
 	}
 
 
+	//Métodos auxiliares como toString, compareTo o hashCode
 public String toString() {
 		return "PeliculasImpl [titulo=" + titulo + ", director=" + director + ", estrellas=" + estrellas
 				+ ", calificacion=" + calificacion + ", duracion=" + duracion + ", anyoEstreno=" + anyoEstreno
@@ -134,17 +138,26 @@ public String toString() {
 	}
 
 
-@Override
-public void seDirector() {
-	// TODO Auto-generated method stub
-	
+
+public int hashCode() {
+	return Objects.hash(anyoEstreno, director, titulo);
 }
 
 
-@Override
-public void setDuracion(Integer duracion) {
-	// TODO Auto-generated method stub
-	
-}
+
+public boolean equals(Object obj) {
+	if (this == obj)
+		return true;
+	if (obj == null)
+		return false;
+	if (getClass() != obj.getClass())
+		return false;
+	PeliculasImpl other = (PeliculasImpl) obj;
+	return Objects.equals(anyoEstreno, other.anyoEstreno) && Objects.equals(director, other.director)
+			&& Objects.equals(titulo, other.titulo);}
+
+
+
 
 }
+

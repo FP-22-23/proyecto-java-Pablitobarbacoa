@@ -18,6 +18,7 @@ import fp.tiposs.PeliculasImpl;
 @SuppressWarnings("unused")
 public class Peliculas_tests {
 
+	//Creación de una lista de actores
 	public static void main(String []args) {
 	List<String> listita = new LinkedList<>();
 	
@@ -27,7 +28,7 @@ public class Peliculas_tests {
 	listita.add(star1);
 	listita.add(star2);
 	
-	
+	//Creación de una lista de géneros para la película
 	List<String> categorias = new LinkedList<String>();
 	
 	String cat1= "Comedia negra";
@@ -37,8 +38,10 @@ public class Peliculas_tests {
 	categorias.add(cat2);
 	categorias.add(cat3);
 	
+	//Creación de una variable c del tipo Categoría
 	Categoria c= new Categoria(categorias, "Más de 18");
 			
+	//Utilización del método Constructor con todas las variables
 	
 	Peliculas p= new PeliculasImpl("El lobo de Wall Street", "Martin Scorsese", listita, 8.2, Duration.ofMinutes(179),2013, true, 392.5, c);
 	
@@ -46,14 +49,35 @@ public class Peliculas_tests {
 	
 	System.out.println(p);
 	
+	//Prueba de un getter
 	System.out.println("Prueba del getter del Año de Estreno: " + p.getAnyoEstreno());
 	
+	//Prueba de un setter
 	p.setCalificacion(6.4);
 	
 	System.out.println("Prueba del cambio de Calificación con el setter: " + p.getCalificacion());
 	
+	
+	//Prueba de una función auxiliar
 	System.out.println("Prueba de la función auxiliar del Ratio Recaudación/Calificación: "+ p.getRatioCalificacionyRecaudacion(p.getCalificacion(), p.getRecaudacion())+ " millones/punto");
 	
 	
+	
+	//Creación de una película con mimsmo nombre, pero distinto director para utilizar el equals
+	
+	Peliculas p2= new PeliculasImpl("El lobo de Wall Street", "Manolín Fernandez", 2013, 8.2);
+	
+	System.out.println("Codigo hash de p:" + p.hashCode() );
+	System.out.println("Código hash de p2:"+ p2.hashCode());
+	System.out.println("Son c1 y c2 iguales?:" + p.equals(p2));
+	
+	//Ahora, le vamos a poner el mismo director a p2, pero le vamos a cambiar la calificación
+	
+	p2.setDirector("Martin Scorsese");
+	
+	
+	System.out.println("Codigo hash de p:" + p.hashCode() );
+	System.out.println("Código hash de p2:"+ p2.hashCode());
+	System.out.println("Son c1 y c2 iguales?:" + p.equals(p2));
 
 }}

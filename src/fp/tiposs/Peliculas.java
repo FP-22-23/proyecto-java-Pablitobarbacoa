@@ -11,7 +11,7 @@ public interface Peliculas {
 	
 	
 	String getDirector();
-	void seDirector();
+	void setDirector(String director);
 	
 	List<String> getEstrellas();
 	void setEstrellas(List<String> estrellas);
@@ -21,7 +21,7 @@ public interface Peliculas {
     void setCalificacion(Double calificacion);
     
     Duration getDuracion();
-    void setDuracion(Integer duracion);
+    void setDuracion(Duration duracion);
     
     Boolean getTieneSexo();
     void setTieneSexo(Boolean tieneSexo);
