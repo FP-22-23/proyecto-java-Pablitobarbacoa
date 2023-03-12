@@ -45,9 +45,9 @@ Representa una película en concreto.
 - _estrellas_, de tipo List<String>, consultable y modificable.
 - _calificacion_, de tipo Double, consultable y modificable.
 - _duracion_, de tipo Duration, consultable y modificable.
-- _anyoEstreno_, de tipo PrecioVenta, consultable y modificable. Puede ser de tres tipos distintos: Rebajado, PrecioInicial (no hay cambios en el precio) o AumentaPrecio.
-- _codigo_, de tipo Integer, consultable y modificable.
-- _categoria_, de tipo List<String>, consultable y modificable.
+- _anyoEstreno_, de tipo LocalDate, consultable y modificable.
+- _tieneSexo_, de tipo Boolean, consultable y modificable.
+- _recaudacionMillones_, de tipo Double, consultable y modificable.
 - _disponible_, de tipo Boolean, consultable y modificable.
 - _totalVentas_, de tipo Integer, consultable y modificable.
 
@@ -59,20 +59,20 @@ Representa una película en concreto.
 
 **Restricciones**:
  
-- R1: El ID de cada producto no puede estar vacío.
-- R2: Si un producto no se ha vendido ninguna vez no puede estar agotado, por lo que debe de estar disponible, es decir, si el valor de _totalSales_ es 0, _available_ no podrá ser FALSE.
+- R1: El título no puede estar vacío.
+- R2: El nombre del director no puede estar vacío.
 
 
-**Criterio de igualdad**: Dos productos son iguales si tienen el mismo ID y nombre, son de la misma marca y tienen el mismo precio inicial.
+**Criterio de igualdad**: Dos productos son iguales si tienen el mismo título, nombre del director y fecha de estreno.
 
 **Criterio de ordenación**: Los productos están ordenados primero por su precio inicial y después por el número total de ventas.
 
-**Otras operaciones**:
+**Funcione auxiliares**:
  
--	_Double getDiferenciaPrecio()_: Devuelve la diferencia de dinero entre el precio final e inicial del producto.
+-	_Double getgetRatioCalificacionyRecaudacion()_: Devuelve el ratio entre la recaudación en millones y la calificación.
 
 #### Tipos auxiliares
-- _PrecioVenta_, enumerado. Puede tomar 3 valores distintos: REBAJADO, AUMENTAPRECIO, PRECIOINICIAL.
+- _Categoría_, tipo Categoría. Está formada por una lista de tipo String y otro tipo String que representa el tipo de censura.
 
 ### Factoría
 Descripción breve de la factoría.
