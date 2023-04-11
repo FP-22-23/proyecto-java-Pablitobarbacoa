@@ -1,6 +1,7 @@
 package fp.tipos.test;
 
 import java.time.Duration;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -10,11 +11,11 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import fp.tiposs.Categoria;
 import fp.tiposs.Peliculas;
 
 
-import fp.tiposs.PeliculasImpl;
+import fp.tiposs.Pelicula;
+import fp.tiposs.TipoCensura;
 
 @SuppressWarnings("unused")
 public class Peliculas_tests {
@@ -39,12 +40,10 @@ public class Peliculas_tests {
 	categorias.add(cat2);
 	categorias.add(cat3);
 	
-	//Creación de una variable c del tipo Categoría
-	Categoria c= new Categoria(categorias, "Más de 18");
 			
 	//Utilización del método Constructor con todas las variables
 	
-	Peliculas p= new PeliculasImpl("El lobo de Wall Street", "Martin Scorsese", listita, 8.2, Duration.ofMinutes(179),LocalDate.of(2013, 05, 14), true, 392.5, c);
+	Peliculas p= new Pelicula("El lobo de Wall Street", "Martin Scorsese", listita, 8.2,categorias,  Duration.ofMinutes(179),TipoCensura.UA,2013, true, 392.5);
 	
 	
 	
@@ -66,7 +65,7 @@ public class Peliculas_tests {
 	
 	//Creación de una película con mimsmo nombre, pero distinto director para utilizar el equals
 	
-	Peliculas p2= new PeliculasImpl("El lobo de Wall Street", "Manolín Fernandez", LocalDate.of(2013, 05, 14), 8.2);
+	Peliculas p2= new Pelicula("El lobo de Wall Street", "Manolín Fernandez", 2023, 8.2);
 	
 	System.out.println("Codigo hash de p:" + p.hashCode() );
 	System.out.println("Código hash de p2:"+ p2.hashCode());

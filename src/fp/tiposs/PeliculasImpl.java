@@ -1,163 +1,63 @@
 package fp.tiposs;
 
-import java.time.Duration;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-import utiles.Checkers;
+public class PeliculasImpl implements Peliculas {
 
-@SuppressWarnings("unused")
-
-public  class PeliculasImpl implements Peliculas {
-
+	private List<Pelicula> peliculas;
 	
+	public PeliculasImpl() {
 	
-	
-	
-	
-
-
-
-private String titulo;
-private String director;
-private List<String> estrellas;
-private Double calificacion;
-private Duration duracion;
-private LocalDate anyoEstreno;
-private Boolean tieneSexo;
-private Double recaudacionMillones;
-
-
-
-
-//MÉTODOS CONSTRUCTORES
-
-
-
-public PeliculasImpl(String titulo, String director,LocalDate anyoEstreno, Double calificacion) {
-
-	this.titulo = titulo;
-	Checkers.check("Error en el título", titulo != null);
-	
-	this.director = director;
-	Checkers.check("Error en el nombre del director", director != null);
-	
-	this.calificacion = calificacion;
-	this.anyoEstreno=anyoEstreno;
-	
+		peliculas = new ArrayList<Pelicula>();
 }
-
-
-public PeliculasImpl(String titulo, String director, List<String> estrellas, Double calificacion, Duration duracion,LocalDate anyoEstreno,
-		Boolean tieneSexo, Double recaudacion, Categoria c) {
-	this.titulo = titulo;
-	Checkers.check("Error en el título", titulo != null);
 	
-	this.director = director;
-	Checkers.check("Error en el nombre del director", director != null);
-	
-	this.estrellas = estrellas;
-	
-	
-	this.calificacion = calificacion;
-	this.duracion = Duration.ZERO;
-	this.anyoEstreno=anyoEstreno;
-	this.tieneSexo = tieneSexo;
-	this.recaudacionMillones=recaudacion;
-	c= null;
-}
+	public PeliculasImpl(Collection<Pelicula> peliculas) {
+		this.peliculas= new ArrayList<Pelicula>(peliculas);
+	}
 
-//MÉTODOS GETTERS Y SETTERS
-
-	public String getTitulo() {
-		return titulo;}
-	public void setTitulo(String titulo) {
-		Checkers.check("Error en el título", titulo != null);
-		this.titulo = titulo;}
-
-
-	public String getDirector() {
-		return director;}
-	
-	public void setDirector(String director) {
-		Checkers.check("Error en el nombre del director", director != null);
-		this.director = director;}
-
-
-	public List<String> getEstrellas() {
-		return estrellas;}
-	public void setEstrellas(List<String> estrellas) {
-		this.estrellas = estrellas;}
-
-
-	public Double getCalificacion() {
-		return calificacion;}
-	public void setCalificacion(Double calificacion) {
-		this.calificacion = calificacion;}
-
-
-	public Duration getDuracion() {
-		return duracion;}
-	public void setDuracion(Duration duracion) {
-		this.duracion = duracion;}
-
-
-	public Boolean getTieneSexo() {
-		return tieneSexo;}
-	public void setTieneSexo(Boolean tieneSexo) {
-		this.tieneSexo = tieneSexo;}
-	
-	
-	public LocalDate getAnyoEstreno() {
-		return anyoEstreno;}
-	public void setAnyoEstreno(LocalDate anyoEstreno) {
-		this.anyoEstreno = anyoEstreno;}
-	
-	
-	public Double getRecaudacion() {
-		return recaudacionMillones;}
-	public void setRecaudacion(Double recaudacion) {
-		this.recaudacionMillones = recaudacion;}
-
-
-	//Función auxiliar
-	public Double getRatioCalificacionyRecaudacion(Double calificacion, Double recaudacion ) {
+	public PeliculasImpl(Stream<Pelicula> peliculas) {
+		this.peliculas = peliculas.collect(Collectors.toList());
 		
-		return this.recaudacionMillones/this.calificacion;
+	
 	}
 
 
-	//Métodos auxiliares como toString, compareTo o hashCode
-public String toString() {
-		return "PeliculasImpl [titulo=" + titulo + ", director=" + director + ", estrellas=" + estrellas
-				+ ", calificacion=" + calificacion + ", duracion=" + duracion + ", anyoEstreno=" + anyoEstreno
-				+ ", tieneSexo=" + tieneSexo + ", recaudacionMillones=" + recaudacionMillones + "]";
+	public List<Pelicula> getPeliculas() {
+		return peliculas;
+	}
+
+
+	public Integer getNumeroPartidas() {
+		return peliculas.size();
+	}
+
+
+	public void añadirPelicula(Pelicula p) {
+		peliculas.add(p);
+		
+	}
+
+	public void añadirCollecionPelicula(Collection<Pelicula> p) {
+		peliculas.addAll(p);
+		
 	}
 
 
 
-public int hashCode() {
-	return Objects.hash(anyoEstreno, director, titulo);
+
+	public void eliminarPelicula(Pelicula p) {
+		peliculas.remove(p);
+		
+	}
+
+
+	public void eliminarPelicula(int n) {
+		peliculas.remove(n);
+		
+	}
+	
 }
-
-
-
-public boolean equals(Object obj) {
-	if (this == obj)
-		return true;
-	if (obj == null)
-		return false;
-	if (getClass() != obj.getClass())
-		return false;
-	PeliculasImpl other = (PeliculasImpl) obj;
-	return Objects.equals(anyoEstreno, other.anyoEstreno) && Objects.equals(director, other.director)
-			&& Objects.equals(titulo, other.titulo);}
-
-
-
-
-}
-

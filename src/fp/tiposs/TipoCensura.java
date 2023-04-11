@@ -1,5 +1,5 @@
 package fp.tiposs;
 
 public enum TipoCensura {
- UA, R, A, S, 
+ UA, R, A, S,NA,PG
 }
