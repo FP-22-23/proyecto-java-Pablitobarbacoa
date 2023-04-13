@@ -1,15 +1,14 @@
 package fp.tiposs;
 
 import java.io.IOException;
+
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import utiles.Checkers;
@@ -61,7 +60,7 @@ public class FactoriaPeliculas {
 		TipoCensura tipoCensura = TipoCensura.valueOf(campo[6].trim());
 		LocalDate anyoEstreno= LocalDate.parse((campo[7].trim()), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 		Boolean tieneSexo= Boolean.valueOf((campo[8].trim().toLowerCase()));
-		Double recaudacionMillones= Double.valueOf((campo[9].trim()).replace(",", "."));
+		Double recaudacionMillones= Double.valueOf((campo[9].trim()).replace("\"", "").replace(",", "."));
 		
 		return new Pelicula(titulo, director, estrellas, calificacion, categoria, duracion, tipoCensura, anyoEstreno, tieneSexo, recaudacionMillones) ;
 		
@@ -73,7 +72,7 @@ public class FactoriaPeliculas {
 		String [] trozos=cadena.split(",");
 		List<String> lista=new ArrayList<>();
 		for(String t:trozos) {
-			lista.add(t.trim());
+			lista.add(t.trim().replace("\"", ""));
 			
 			
 		}

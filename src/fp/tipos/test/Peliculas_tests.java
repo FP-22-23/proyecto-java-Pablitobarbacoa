@@ -42,11 +42,8 @@ public class Peliculas_tests {
 	
 			
 	//Utilización del método Constructor con todas las variables
-	
-	Peliculas p= new Pelicula("El lobo de Wall Street", "Martin Scorsese", listita, 8.2,categorias,  Duration.ofMinutes(179),TipoCensura.UA,2013, true, 392.5);
-	
-	
-	
+
+
 	System.out.println(p);
 	
 	//Prueba de un getter
@@ -64,8 +61,7 @@ public class Peliculas_tests {
 	
 	
 	//Creación de una película con mimsmo nombre, pero distinto director para utilizar el equals
-	
-	Peliculas p2= new Pelicula("El lobo de Wall Street", "Manolín Fernandez", 2023, 8.2);
+
 	
 	System.out.println("Codigo hash de p:" + p.hashCode() );
 	System.out.println("Código hash de p2:"+ p2.hashCode());

@@ -87,38 +87,25 @@ public Pelicula(String titulo, String director, List<String> estrellas, Double c
 
 
 	public List<String> getCategoria() {
-		return categoria;
-	}
-
-
+		return categoria;}
 	public void setCategoria(List<String> categoria) {
-		this.categoria = categoria;
-	}
+		this.categoria = categoria;}
 
 
 	public TipoCensura getTipocensura() {
-		return tipocensura;
-	}
-
-
+		return tipocensura;}
 	public void setTipocensura(TipoCensura tipocensura) {
-		this.tipocensura = tipocensura;
-	}
+		this.tipocensura = tipocensura;}
 
 
 	public Double getRecaudacionMillones() {
-		return recaudacionMillones;
-	}
-
-
+		return recaudacionMillones;}
 	public void setRecaudacionMillones(Double recaudacionMillones) {
-		this.recaudacionMillones = recaudacionMillones;
-	}
+		this.recaudacionMillones = recaudacionMillones;}
 
 
 	public String getDirector() {
 		return director;}
-	
 	public void setDirector(String director) {
 		Checkers.check("Error en el nombre del director", director != null);
 		this.director = director;}
@@ -152,19 +139,6 @@ public Pelicula(String titulo, String director, List<String> estrellas, Double c
 		return fechaEstreno;}
 	public void setAnyoEstreno(LocalDate anyoEstreno) {
 		this.fechaEstreno = anyoEstreno;}
-	
-	
-	public Double getRecaudacion() {
-		return recaudacionMillones;}
-	public void setRecaudacion(Double recaudacion) {
-		this.recaudacionMillones = recaudacion;}
-
-
-	//Función auxiliar
-	public Double getRatioCalificacionyRecaudacion(Double calificacion, Double recaudacion ) {
-		
-		return this.recaudacionMillones/this.calificacion;
-	}
 
 
 	//Métodos auxiliares como toString, compareTo o hashCode
@@ -173,8 +147,6 @@ public Pelicula(String titulo, String director, List<String> estrellas, Double c
 public int hashCode() {
 	return Objects.hash(fechaEstreno, director, titulo);
 }
-
-
 
 
 public String toString() {
