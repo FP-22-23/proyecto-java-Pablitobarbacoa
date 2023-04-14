@@ -40,7 +40,7 @@ public class FactoriaPeliculas {
 			res= new PeliculasImpl(sv);
 		}
 		catch(IOException e) {
-			System.out.println("No se ha encontrado el fichero"+ rutaFichero);
+			System.out.println("No se ha encontrado el fichero: "+ rutaFichero);
 		}
 		return res;
 		
@@ -69,10 +69,10 @@ public class FactoriaPeliculas {
 	
 	public static  List<String> parseLista(String cadena){
 
-		String [] trozos=cadena.split(",");
+		String [] trozos=cadena.split(".");
 		List<String> lista=new ArrayList<>();
 		for(String t:trozos) {
-			lista.add(t.trim().replace("\"", ""));
+			lista.add(t.trim());
 			
 			
 		}

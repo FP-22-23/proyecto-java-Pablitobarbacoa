@@ -27,11 +27,9 @@ public class PeliculasImpl implements Peliculas {
 	}
 
 	public PeliculasImpl(Stream<Pelicula> peliculas) {
-		this.peliculas = peliculas.collect(Collectors.toList());
-		
-	
-	}
+		this.peliculas = peliculas.collect(Collectors.toList());}
 
+	
 	//Operaciones con la lista de películas
 
 	public List<Pelicula> getPeliculas() {
@@ -89,6 +87,9 @@ public class PeliculasImpl implements Peliculas {
 	public String toString() {
 		return "PeliculasImpl [Peliculas=" + peliculas + "]";
 	}
+	
+	
+	//Diccionarios y operaciones con los datos del csv
 	
 	
 	public Map<String, Double> getRatioCalificacionRecaudacionYNombreSegunValor(Integer valor) {
