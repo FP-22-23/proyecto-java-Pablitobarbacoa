@@ -8,6 +8,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -55,7 +56,7 @@ public class FactoriaPeliculas {
 		String director= campo[1].trim();
 		List<String> estrellas= parseLista(campo[2]);
 		Double calificacion = Double.valueOf(campo[3].trim());
-		List<String> categoria = parseLista(campo[4]);
+		List<String> categoria = parseLista2(campo[4].trim());
 		Duration duracion = Duration.ofMinutes(Integer.valueOf(campo[5].replace("min", "").trim()));
 		TipoCensura tipoCensura = TipoCensura.valueOf(campo[6].trim());
 		LocalDate anyoEstreno= LocalDate.parse((campo[7].trim()), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
@@ -68,8 +69,22 @@ public class FactoriaPeliculas {
 	
 	
 	public static  List<String> parseLista(String cadena){
+		
+		String [] trozos=cadena.split(". ");
+		List<String> lista=new LinkedList<>();
+		for(String t:trozos) {
+			lista.add(t);
+			
+			
+		}
+		
+		return lista;
+		
+	}
+	
+	public static  List<String> parseLista2(String cadena){
 
-		String [] trozos=cadena.split(".");
+		String [] trozos=cadena.split(";");
 		List<String> lista=new ArrayList<>();
 		for(String t:trozos) {
 			lista.add(t.trim());
@@ -80,7 +95,6 @@ public class FactoriaPeliculas {
 		return lista;
 		
 	}
-	
 
 }
 

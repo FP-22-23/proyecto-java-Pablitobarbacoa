@@ -31,7 +31,12 @@ public class PeliculasImpl implements Peliculas {
 
 	
 	//Operaciones con la lista de películas
-
+	
+	public Pelicula getPeliculaIndice(Integer indice) {
+		
+		return peliculas.get(indice);
+	}
+	
 	public List<Pelicula> getPeliculas() {
 		return peliculas;
 	}
@@ -92,7 +97,7 @@ public class PeliculasImpl implements Peliculas {
 	//Diccionarios y operaciones con los datos del csv
 	
 	
-	public Map<String, Double> getRatioCalificacionRecaudacionYNombreSegunValor(Integer valor) {
+	public Map<String, Double> getRatioCalificacionRecaudacionYNombreSegunValor(Double valor) {
 		Map<String, Double> res= new HashMap<>();
 		
 		
@@ -164,13 +169,14 @@ public class PeliculasImpl implements Peliculas {
 	public Map<String, List<String>> peliculasCategoria(String categoria){
 		Map<String, List<String>> res= new HashMap<>();
 		
+		List<String> lista= new LinkedList<>(); 
 		for (Pelicula p: peliculas) {
-			
-			List<String> lista= new LinkedList<>(); 
+
 			
 			if((p.getCategoria()).contains(categoria)) {
 				lista.add(p.getTitulo());
 				
+			}else {
 				res.put(categoria, lista);
 			}
 		}

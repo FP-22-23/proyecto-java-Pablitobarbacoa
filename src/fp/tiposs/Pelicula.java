@@ -42,34 +42,38 @@ private Double recaudacionMillones;
 
 
 
-public Pelicula(String titulo, String director,LocalDate localDate, Double calificacion) {
+public Pelicula(String titulo, String director,LocalDate fechaEstreno, Double calificacion) {
 
 	this.titulo = titulo;
 	Checkers.check("Error en el título", titulo != null);
 	
 	this.director = director;
 	Checkers.check("Error en el nombre del director", director != null);
+	Checkers.check("La calificación no puede ser negativa", calificacion>0);
 	
 	this.calificacion = calificacion;
-	this.fechaEstreno=localDate;
+	this.fechaEstreno=fechaEstreno;
 	
 }
 
 
-public Pelicula(String titulo, String director, List<String> estrellas, Double calificacion,List<String> categoria, Duration duracion,TipoCensura tipoCensura, LocalDate anyoEstreno,
+public Pelicula(String titulo, String director, List<String> estrellas, Double calificacion,List<String> categoria, Duration duracion,TipoCensura tipoCensura, LocalDate fechaEstreno,
 		Boolean tieneSexo, Double recaudacion) {
 	this.titulo = titulo;
 	Checkers.check("Error en el título", titulo != null);
 	
 	this.director = director;
 	Checkers.check("Error en el nombre del director", director != null);
-	
+	Checkers.check("La calificación no puede ser negativa", calificacion>0);
+	Checkers.check("La lista de estrellas no puede estar vacía", estrellas.isEmpty()==false);
+	Checkers.check("La lista de categorías no puede estar vacía", categoria.isEmpty()==false);
+
 	this.estrellas = estrellas;
 	
 	
 	this.calificacion = calificacion;
-	this.duracion = Duration.ZERO;
-	this.fechaEstreno=anyoEstreno;
+	this.duracion = duracion;
+	this.fechaEstreno=fechaEstreno;
 	this.tieneSexo = tieneSexo;
 	this.recaudacionMillones=recaudacion;
 	this.categoria=categoria;
@@ -135,18 +139,13 @@ public Pelicula(String titulo, String director, List<String> estrellas, Double c
 		this.tieneSexo = tieneSexo;}
 	
 	
-	public LocalDate getAnyoEstreno() {
+	public LocalDate getFechaEstreno() {
 		return fechaEstreno;}
-	public void setAnyoEstreno(LocalDate anyoEstreno) {
+	public void setFechaEstreno(LocalDate anyoEstreno) {
 		this.fechaEstreno = anyoEstreno;}
 
 
 	//Métodos auxiliares como toString, compareTo o hashCode
-
-
-public int hashCode() {
-	return Objects.hash(fechaEstreno, director, titulo);
-}
 
 
 public String toString() {
@@ -157,6 +156,13 @@ public String toString() {
 }
 
 
+@Override
+public int hashCode() {
+	return Objects.hash(director, fechaEstreno, titulo);
+}
+
+
+@Override
 public boolean equals(Object obj) {
 	if (this == obj)
 		return true;
@@ -165,9 +171,17 @@ public boolean equals(Object obj) {
 	if (getClass() != obj.getClass())
 		return false;
 	Pelicula other = (Pelicula) obj;
-	return Objects.equals(fechaEstreno, other.fechaEstreno) && Objects.equals(director, other.director)
-			&& Objects.equals(titulo, other.titulo);}
+	return Objects.equals(director, other.director) && Objects.equals(fechaEstreno, other.fechaEstreno)
+			&& Objects.equals(titulo, other.titulo);
+}
 
+//Criterio de Orden Natural en base a su fecha de estreno
+
+public int compareTo(Pelicula p) {
+	int res = getFechaEstreno()   .compareTo(p.getFechaEstreno());
+
+	return res;
+}
 
 }
 

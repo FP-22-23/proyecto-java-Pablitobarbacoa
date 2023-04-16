@@ -12,11 +12,11 @@ El objetivo de este proyecto es analizar los datos de las peliculas más popular
   * **fp.common**: Paquete que contiene los tipos auxiliares del proyecto
   * **fp.utiles**:  Paquete que contiene las clases de utilidad. 
 * **/data**: Contiene el dataset del proyecto
-    * **IMDb_Data_final_Elbueno - IMDb_Data_final**: Archivo csv que muestra información sobre las películas más populares en IMDb desde 1898 hasta 2022.
+    * **Fichero.csv**: Archivo csv que muestra información sobre las películas más populares en IMDb desde 1898 hasta 2022.
     
 ## Estructura del *dataset*
 
-El dataset original cuenta con 8 columnas. Aunque, he añadido dos más, una de tipo Booleano llamada "Contiene Sexo" y otra de Tipo Double que se llama "Recaudación(en millones de dólares)", así, ya están todos los tipos de variables en el dataset, o sea,el tipo String (cadena), tipo Integer(número entero), tipo Double (número real), tipo LocalDateTime (fecha), tipo Boolean y de tipo Enumerado.
+El dataset original cuenta con 8 columnas. Aunque, he añadido dos más, una de tipo Booleano llamada "Contiene Sexo" y otra de Tipo Double que se llama "Recaudación(en millones de dólares)", así, ya están todos los tipos de variables en el dataset, o sea,el tipo String (cadena), tipo Integer(número entero), tipo Double (número real), tipo LocalDate (fecha), tipo Boolean y de tipo Enumerado.
 
 El dataset está compuesto por 11 columnas, con la siguiente descripción:
 
@@ -24,9 +24,10 @@ El dataset está compuesto por 11 columnas, con la siguiente descripción:
 * **Director**: de tipo cadena, representa el nombre del director.
 * **Stars**: es una lista del tipo cadena, representa una lista con el nombre de las estrellas que aparecen en la película.
 * **IMDb-Rating**: de tipo real, representa la calificación que tiene la película según IMDb.
-* **Categoría**: de tipo lista de cadena, representa el género al que pertenece la película.
+* **Category**: de tipo lista de cadena, representa el género al que pertenece la película.
 * **Duration**: de tipo duracion, representa lo que dura la película.
-* **Release Year**: de tipo fecha, representa el año de estreno de la película
+* **Censor Board-Rating**: Contiene el tipo de censura de la película
+* **Fecha_estreno**: de tipo fecha, representa el año de estreno de la película
 * **Contiene Sexo**: de tipo booleano, representa si la película contiene escenas de sexo.
 * **Recaudación(en millones de dólares)**: de tipo real, representa el número total de reacudación que ha conseguido la película.
 
@@ -35,7 +36,7 @@ El dataset está compuesto por 11 columnas, con la siguiente descripción:
 
 Los tipos que se han implementado en el proyecto son los siguientes:
 
-### Tipo Base - PeliculasImpl
+### Tipo Base - Pelicula
 Representa una película en concreto.
 
 **Propiedades**:
@@ -44,69 +45,70 @@ Representa una película en concreto.
 - _director_, de tipo String, consultable y modificable.
 - _estrellas_, de tipo List<String>, consultable y modificable.
 - _calificacion_, de tipo Double, consultable y modificable.
+- _categoria_, de tipo List<String>, consultable y modificable.
 - _duracion_, de tipo Duration, consultable y modificable.
-- _anyoEstreno_, de tipo LocalDate, consultable y modificable.
+- _tipocensura_, de tipo TipoCensura, consultable y modificable.
+- _fechaEstreno_, de tipo LocalDate, consultable y modificable.
 - _tieneSexo_, de tipo Boolean, consultable y modificable.
 - _recaudacionMillones_, de tipo Double, consultable y modificable.
-- _disponible_, de tipo Boolean, consultable y modificable.
-- _totalVentas_, de tipo Integer, consultable y modificable.
+
 
 **Constructores**: 
 
-- C1: Crea un objeto de tipo Producto a partir de los siguientes parámetros: String id, LocalDateTime fechaInicio. El resto de parámetros tienen el valor null.
-- C2: Crea un objeto de tipo Producto a partir de los siguientes parámetros: String id, LocalDateTime fechaInicio, String nombreProducto, Double precioInicial, Double precioFinal, PrecioVenta precioVenta, Integer codigo, List<String> categoria, Boolean disponible, Integer totalVentas.
+- C1: Crea un objeto de tipo Producto a partir de los siguientes parámetros: String titulo, String director, LocalDate fechaEstreno, Double calificacion
+- C2: Crea un objeto de tipo Producto a partir de los siguientes parámetros: String titulo, String director, List<String> estrellas, Double calificacion,List<String> categoria, Duration duracion,TipoCensura tipoCensura, LocalDate fechaEstreno,Boolean tieneSexo, Double recaudacion
 
 
 **Restricciones**:
  
 - R1: El título no puede estar vacío.
 - R2: El nombre del director no puede estar vacío.
+- R3: La calificación no puede ser negativa.
+- R4: La lista de estrellas no puede estar vacía.
+- R5: La lista de categorías no puede estar vacía.
 
 
 **Criterio de igualdad**: Dos productos son iguales si tienen el mismo título, nombre del director y fecha de estreno.
 
-**Criterio de ordenación**: Los productos están ordenados primero por su precio inicial y después por el número total de ventas.
+**Criterio de ordenación**: Los productos están ordenados según su fecha de estreno.
 
 **Funcione auxiliares**:
  
--	_Double getgetRatioCalificacionyRecaudacion()_: Devuelve el ratio entre la recaudación en millones y la calificación.
+-	_String toString_: Devuelve el toString del tipo Pelicula
 
 #### Tipos auxiliares
-- _Categoría_, tipo Categoría. Está formada por una lista de tipo String y otro tipo String que representa el tipo de censura.
+- _TipoCensura_, tipo TipoCensura: es un Enumerate que contiene los tipo de censura que puede tener la película
 
-### Factoría
-Descripción breve de la factoría.
+### Factoría-FactoriaPelículas
 
-- _método 1_: Descripción del método 1.
--	_método 2_: Descripción del método 2.
+-El método de factoría crea un objeto de tipo Peliculas según la ruta del fichero impuesta como parámetro
 
-### Tipo Contenedor
+### Tipo Contenedor - Peliculas
 
-Descripción breve del tipo contenedor.
+Clase contenedora de los objeto de tipo Pelicula
 
 **Propiedades**:
 
-- _propiedad1_, de tipo \<Tipo1\>, consultable. 
-- _propiedad2_, de tipo \<Tipo2\>, consultable y modificable. 
-- ...
-- 
+_peliculas_:de tipo List<String> , consultable y modificable.
 **Constructores**: 
 
-- C1: Descripción del constructor 1.
-- C2: Descripción del constructor 2.
-- ...
+- C1: Constructor que devuelve un parámetro de tipo List<>. Crea un objeto de tipo Peliculas con las películas incluidas en una lista.
+- C2: Constructor con un parámetro de tipo Stream. Crea un objeto de tipo Peliculas con las peliculas incluidas en el Stream dado.
+
 
 **Restricciones**:
  
-- R1: Descripción de la restricción 1.
-- R2: Descripción de la restricción 2.
-- ...
-- 
-**Criterio de igualdad**: Describir el criterio de igualdad
-
-**Criterio de ordenación**: Describir el criterio de ordenación (si lo hay).
+- R1: La línea del csv debe tener 10 parámetros
 
 **Otras operaciones**:
- 
--	_método 1_: Descripción del método 1.
-- ...
+
+
+-Map<String, List<String>> peliculasCategoria(String categoria): Crea un diccionario con las películas que hay de la categoría
+	
+-Map<String, Integer> contadorPorCategoria(String categoria): Crea un diccionario que cuenta las películas que hay de una categoría
+	
+-Boolean peliculaDirectorYActor(String titulo, String director, String actor): Devuelve verdadero si la película tiene ése director y ése actor
+	
+-Map<TipoCensura, Integer> contadorPorTipoCensura(): Devuelve un diccionario con clave TipoCensura y valor el número de veces que aparece
+	
+-Map<String, Double> getRatioCalificacionRecaudacionYNombreSegunValor(Double valor):Devuelve un diccionario con el ratio de la calificación y la recaudación filtrando por un valor como valor y como clave el título de la película
