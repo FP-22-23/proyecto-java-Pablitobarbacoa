@@ -61,13 +61,14 @@ public class Peliculas_tests {
 		testFuncionContadorPorCategoria(datos, "Action");
 		
 		System.out.println("########################################################################################################");
-		testFuncionPeliculaDirectorYActor(datos,"Top Gun: Maverick" ,"JosephKosinski","TomCruise");
+		testFuncionExistePeliculaDirectorYActor(datos,"Top Gun: Maverick" ,"JosephKosinski","TomCruise");
 		
 		System.out.println("########################################################################################################");
 		testFuncionContadorPorTipoCensura(datos);
 		
 		System.out.println("########################################################################################################");
 		testGetRatioCalificacionRecaudacionYNombreSegunValor(datos, 5.0 );
+
 	}
 	
 
@@ -87,7 +88,7 @@ public class Peliculas_tests {
 	}
 
 
-	public static void testFuncionPeliculaDirectorYActor (Peliculas p, String titulo, String director, String actor) {
+	public static void testFuncionExistePeliculaDirectorYActor (Peliculas p, String titulo, String director, String actor) {
 		System.out.println("########################################################################################################");
 		System.out.println("Test Función 3(PelículaDirectorYActor): Devuelve verdadero si la película tiene ése director y ése actor: ");
 		System.out.println(p.existePeliculaDirectorYActor(titulo, director, actor));
@@ -111,8 +112,5 @@ public class Peliculas_tests {
 		System.out.println("Hay un número de: " + (p.getRatioCalificacionRecaudacionYNombreSegunValor(valor)).size()+"Películas que superan el ratio: "+ valor);
 	}
 	
-
-
-
 
 }

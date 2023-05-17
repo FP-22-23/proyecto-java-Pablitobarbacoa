@@ -191,7 +191,7 @@ public class PeliculasImpl implements Peliculas {
 	
 	
 	//Función 1
-	public Boolean existePeliculaDirectorYActor2(String titulo, String director, String actor) {
+	public Boolean existePeliculaDirectorYActor1(String titulo, String director, String actor) {
 		
 		return peliculas.stream().
 				anyMatch(x-> x.getTitulo().equals(titulo)&& x.getDirector().equals(director)&&x.getEstrellas().contains(actor));
@@ -227,12 +227,12 @@ public class PeliculasImpl implements Peliculas {
 	
 	//Función 5
 	
-	public List<String> getNPeliculasMásRecaudacionQue (Double n, Integer limite) {
+	public List<String> getNPeliculasJustoMásRecaudacionQue (Double n, Integer limite) {
 		
 		return peliculas.stream()
 				.filter(x-> x.getRecaudacionMillones()>n)
 				.limit(limite)
-				.sorted(Comparator.comparing(Pelicula::getRecaudacionMillones).reversed())
+				.sorted(Comparator.comparing(Pelicula::getRecaudacionMillones))
 				.map(Pelicula::getTitulo)
 				
 				.collect(Collectors.toList());

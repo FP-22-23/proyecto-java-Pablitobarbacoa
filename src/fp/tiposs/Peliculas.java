@@ -44,4 +44,48 @@ public interface Peliculas {
 	Map<TipoCensura, Integer> contadorPorTipoCensura();
 	
 	Map<String, Double> getRatioCalificacionRecaudacionYNombreSegunValor(Double valor);
+	
+	
+	
+	//Entrega Final Bloque I
+	
+	Boolean existePeliculaDirectorYActor1(String titulo, String director, String actor);
+	
+	Map<TipoCensura, Integer> contadorPorTipoCensura2();
+	
+	List<String> peliculasCategoria2(String categoria);
+	
+	String getPeliculaMaxRecaudacionPorCategoria(String categoria);
+	
+	List<String> getNPeliculasJustoMásRecaudacionQue (Double n, Integer limite);
+	
+	//Bloque II de la Entrega Final
+	
+	Map<String, Integer> contadorPorTipoCategoria2();
+	
+	int getMediaRecaudaciones();
+	
+	List<String> getNPeliculasMaxRecaudacion(Integer n);
+	
+	Map<TipoCensura, List<String>> getNMayorCalificacionDeTipoCensura(TipoCensura tipo, Integer n);
+	
+	Map<Integer, Double> maxCalificacionDeAnyo();
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
