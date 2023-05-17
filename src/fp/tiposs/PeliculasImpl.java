@@ -2,6 +2,7 @@ package fp.tiposs;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -135,7 +136,7 @@ public class PeliculasImpl implements Peliculas {
 		return res;
 	}
 	
-	public Boolean peliculaDirectorYActor(String titulo, String director, String actor) {
+	public Boolean existePeliculaDirectorYActor(String titulo, String director, String actor) {
 		Boolean res= false;
 		for(Pelicula p: peliculas) {
 			if (p.getTitulo().equals(titulo)&&p.getDirector().equals(director)&&p.getEstrellas().contains(actor)) {
@@ -185,8 +186,128 @@ public class PeliculasImpl implements Peliculas {
 		
 	}
 	
+	//Bloque 1 entrega final
 	
 	
 	
+	//Función 1
+	public Boolean existePeliculaDirectorYActor2(String titulo, String director, String actor) {
+		
+		return peliculas.stream().
+				anyMatch(x-> x.getTitulo().equals(titulo)&& x.getDirector().equals(director)&&x.getEstrellas().contains(actor));
+	}
 	
+	//Función 2
+	public Map<TipoCensura, Integer> contadorPorTipoCensura2(){
+		
+		return peliculas.stream()
+				.collect(Collectors.groupingBy(Pelicula::getTipocensura,Collectors.collectingAndThen(Collectors.counting(), Long::intValue) ));
+	}
+	
+	
+	//Función 3
+	public List<String> peliculasCategoria2(String categoria){
+		
+		return peliculas.stream()
+				.filter(x-> x.getCategoria().contains(categoria))
+				.map(Pelicula::getTitulo)
+				.collect(Collectors.toList());
+	}
+	
+	
+	//Función 4
+	public String getPeliculaMaxRecaudacionPorCategoria(String categoria) {
+		
+		return peliculas.stream()
+				.filter(x-> x.getCategoria().contains(categoria))
+				.max(Comparator.comparing(Pelicula::getRecaudacionMillones))
+				.map(Pelicula::getTitulo)
+				.orElse(null);
+	}
+	
+	//Función 5
+	
+	public List<String> getNPeliculasMásRecaudacionQue (Double n, Integer limite) {
+		
+		return peliculas.stream()
+				.filter(x-> x.getRecaudacionMillones()>n)
+				.limit(limite)
+				.sorted(Comparator.comparing(Pelicula::getRecaudacionMillones).reversed())
+				.map(Pelicula::getTitulo)
+				
+				.collect(Collectors.toList());
+	}
+	
+	
+	
+	//Bloque 2 Entrega Final
+	
+	//Función 1
+	
+	public Map<String, Integer> contadorPorTipoCategoria2(){
+		
+		return peliculas.stream()
+	            .flatMap(pelicula -> pelicula.getCategoria().stream())
+	            .collect(Collectors.toMap(
+	                    categoria -> categoria,
+	                    categoria -> 1,
+	                    Integer::sum
+	            ));
+	}
+	
+	//Función 2
+	
+	public int getMediaRecaudaciones() {
+		
+		return peliculas.stream()
+	            .collect(Collectors.collectingAndThen(Collectors.averagingDouble(Pelicula::getRecaudacionMillones), Double::intValue));
+	}
+	
+	
+	//Función 3
+	public List<String> getNPeliculasMaxRecaudacion(Integer n) {
+		
+		return peliculas.stream()
+				.sorted(Comparator.comparing(Pelicula::getRecaudacionMillones).reversed())
+				.limit(n)
+				.map(Pelicula::getTitulo)
+				.collect(Collectors.toList());}
+	
+	//Función 4
+	
+	public Map<TipoCensura, List<String>> getNMayorCalificacionDeTipoCensura(TipoCensura tipo, Integer n) {
+	    return peliculas.stream()
+	            .filter(x -> x.getTipocensura().equals(tipo))
+	            .sorted(Comparator.comparing(Pelicula::getCalificacion).reversed())
+	            .limit(n)
+	            .collect(Collectors.groupingBy(Pelicula::getTipocensura, 
+	                    Collectors.mapping(Pelicula::getTitulo, Collectors.toList())));
+	    
+}
+	
+	//Función 5
+	
+	
+	public Map<Integer, Double> maxCalificacionDeAnyo() {
+	    return peliculas.stream()
+	            .collect(Collectors.groupingBy(p -> p.getFechaEstreno().getYear(),
+	                    Collectors.collectingAndThen(
+	                            Collectors.maxBy(Comparator.comparing(Pelicula::getCalificacion)),
+	                            maxPelicula -> maxPelicula.map(Pelicula::getCalificacion).orElse(0.0)
+	                    )
+	            ));
+	}
+				
+				
+	
+
+
+
+
+
+
+
+
+
+
 }

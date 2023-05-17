@@ -90,7 +90,7 @@ public class Peliculas_tests {
 	public static void testFuncionPeliculaDirectorYActor (Peliculas p, String titulo, String director, String actor) {
 		System.out.println("########################################################################################################");
 		System.out.println("Test Función 3(PelículaDirectorYActor): Devuelve verdadero si la película tiene ése director y ése actor: ");
-		System.out.println(p.peliculaDirectorYActor(titulo, director, actor));
+		System.out.println(p.existePeliculaDirectorYActor(titulo, director, actor));
 		
 	}
 

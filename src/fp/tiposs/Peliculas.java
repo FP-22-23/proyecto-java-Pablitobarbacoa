@@ -39,7 +39,7 @@ public interface Peliculas {
 	
 	Map<String, Integer> contadorPorCategoria(String categoria);
 	
-	Boolean peliculaDirectorYActor(String titulo, String director, String actor);
+	Boolean existePeliculaDirectorYActor(String titulo, String director, String actor);
 	
 	Map<TipoCensura, Integer> contadorPorTipoCensura();
 	
