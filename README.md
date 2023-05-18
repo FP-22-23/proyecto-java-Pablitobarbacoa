@@ -112,3 +112,29 @@ _peliculas_:de tipo List<String> , consultable y modificable.
 -Map<TipoCensura, Integer> contadorPorTipoCensura(): Devuelve un diccionario con clave TipoCensura y valor el número de veces que aparece
 	
 -Map<String, Double> getRatioCalificacionRecaudacionYNombreSegunValor(Double valor):Devuelve un diccionario con el ratio de la calificación y la recaudación filtrando por un valor como valor y como clave el título de la película
+
+// Bloque I de la Entrega Final 
+
+-Boolean existePeliculaDirectorYActor1(String titulo, String director, String actor): Devuelve un Booleano acorde si la película titulo contiene al director y al actor actor
+	
+-Map<TipoCensura, Integer> contadorPorTipoCensura2(): Es una función que cuenta según los valores del Tipo Censura
+	
+-List<String> peliculasCategoria2(String categoria): Devuelve una lista con los títulos de las películas que presentan la categoría
+	
+-String getPeliculaMaxRecaudacionPorCategoria(String categoria): Es una función que cuenta vuelve el título de la película que tiene más recaudación de la categoría
+	
+-List<String> getNPeliculasJustoMásRecaudacionQue (Double n, Integer limite) Es una función que devuelve una lista de las N peliculas que tienen más recaudación que ciertos millones.
+
+	
+//Bloque II de la Entrega Final
+	
+-Map<String, Integer> contadorPorTipoCategoria2(): Es una función que cuenta por el tipo de categoría
+	
+-int getMediaRecaudaciones(): Es una función que devuelve la media de las recaudaciones
+	
+-List<String> getNPeliculasMaxRecaudacion(Integer n): Es una función que devuelve el N números de películas con el máximo de recaudación
+
+-Map<TipoCensura, List<String>> getNMayorCalificacionDeTipoCensura(TipoCensura tipo, Integer n): Es una función que devuelve el N número de calificaciones según el tipo de censura
+	
+-Map<Integer, Double> maxCalificacionDeAnyo(): Es una función que devuelve el máximo de calificación de una película por cada año
+	
