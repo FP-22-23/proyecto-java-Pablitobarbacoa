@@ -126,6 +126,7 @@ _peliculas_:de tipo List<String> , consultable y modificable.
 -List<String> getNPeliculasJustoMásRecaudacionQue (Double n, Integer limite) Es una función que devuelve una lista de las N peliculas que tienen más recaudación que ciertos millones.
 
 	
+	
 //Bloque II de la Entrega Final
 	
 -Map<String, Integer> contadorPorTipoCategoria2(): Es una función que cuenta por el tipo de categoría
